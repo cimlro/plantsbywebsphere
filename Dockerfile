@@ -21,6 +21,11 @@ RUN mkdir -p /config/../../shared/config/lib/global
 RUN cp /config/lib/* /config/../../shared/config/lib/global/
 RUN chmod -R 755 /config/../../shared
 
+COPY ./binary/lib/PLANTSDB.tar.gz /config/lib/
+RUN mkdir -p /config/lib/PLANTSDB
+RUN tar -xvf /config/lib/PLANTSDB.tar.gz -C /config/lib/
+RUN rm /config/lib/PLANTSDB.tar.gz
+
 USER root
 #FEATURES: Install any features that are required
 RUN apt-get update && apt-get dist-upgrade -y \
